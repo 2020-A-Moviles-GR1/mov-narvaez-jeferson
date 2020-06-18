@@ -66,6 +66,10 @@ fun main(args:Array<String>) {
     print(respuestaFold);
 val arrayAtaque:ArrayList<Int> = arrayListOf(30,31,22,23,20)
    val vidaActual:Double= arrayAtaque.map{it*0.8}.filter { it>18 }.fold(100.00,{acc,danio-> acc-danio})
+
+
+
+
 }
  // OJO ESTE OPCIONAL NO ES COMO EL DE TYPESCRIPT DELEY HAY QUE MANDAR COMO PARAMETRO PERO PUEDE SER NULL
 fun calcularSueldo(sueldo:Double,tasa:Double=12.00,opcion:Int?=null): Double? {
@@ -75,8 +79,26 @@ fun calcularSueldo(sueldo:Double,tasa:Double=12.00,opcion:Int?=null): Double? {
     }else{
         return sueldo*tasa
     }
+
 }
 //Unit es como void
 fun imprimirMensaje():Unit{
     print("hola mundo"  );
+}
+
+class Suma(uno:Int,dos:Int):NumerosKotlin(uno,dos){
+    public  fun sumar():Int{
+        return this.numeroUno+this.numeroDos
+    }
+}
+abstract  class NumerosJava{
+    val numeroUno:Int
+    val numeroDos:Int
+    constructor(uno:Int,dos:Int){
+        numeroUno=uno;
+        numeroDos=dos;
+    }
+}
+abstract  class NumerosKotlin(val numeroUno:Int, val  numeroDos:Int){
+
 }
