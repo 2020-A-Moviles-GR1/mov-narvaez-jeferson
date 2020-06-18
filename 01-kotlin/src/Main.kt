@@ -59,12 +59,13 @@ fun main(args:Array<String>) {
     println((respuestaAll))
 //Reduce devuelve la suma de los elemento
 //el acumulador siempre empieza en vacio
-    val respuestaReduce: Int = arregloCumpleanos.reduce { acc, i -> acc + i }
+    val respuestaReduce: Int = arregloCumpleanos.reduce{ acc, i -> acc + i }
     println(respuestaReduce);
  //Restar iteraciones desde una semilla
     val respuestaFold:Int = arregloCumpleanos.fold(200,{acc,i -> acc-i});
     print(respuestaFold);
-
+val arrayAtaque:ArrayList<Int> = arrayListOf(30,31,22,23,20)
+   val vidaActual:Double= arrayAtaque.map{it*0.8}.filter { it>18 }.fold(100.00,{acc,danio-> acc-danio})
 }
  // OJO ESTE OPCIONAL NO ES COMO EL DE TYPESCRIPT DELEY HAY QUE MANDAR COMO PARAMETRO PERO PUEDE SER NULL
 fun calcularSueldo(sueldo:Double,tasa:Double=12.00,opcion:Int?=null): Double? {
