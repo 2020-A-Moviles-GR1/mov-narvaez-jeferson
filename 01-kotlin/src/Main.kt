@@ -21,6 +21,14 @@ fun main(args:Array<String>) {
         -12.20 -> print("Sueldo negativo")
         else -> println("No se reconoce el sueldo")
     }
+
+
+    var nombre:String?=null;
+   // nombre="Jeferson"
+    imprimirNombre(nombre)
+    //if(nombre!=null) println(nombre.length)
+
+
     //IF de una linea como el operador ternario
     // val esSueldoMayorAlEstablecido= if(sueldo==12.20) true else false
 
@@ -67,10 +75,22 @@ fun main(args:Array<String>) {
 val arrayAtaque:ArrayList<Int> = arrayListOf(30,31,22,23,20)
    val vidaActual:Double= arrayAtaque.map{it*0.8}.filter { it>18 }.fold(100.00,{acc,danio-> acc-danio})
 
+val nuevoNumeroUno=Suma2(1,2)
+    val nuevoNumeroDos=Suma2(null,2)
+    val nuevoNumeroTres=Suma2(1,null)
+    val nuevoNumeroCuatro=Suma2(null,null)
 
-
-
+    //USar companio Object
+    println(Suma2.arregloNumeros)
+    Suma2.agregarNumero(1)
+    println(Suma2.arregloNumeros)
+    Suma2.eliminarNumero(0)
+    println(Suma2.arregloNumeros)
 }
+fun imprimirNombre(nombre:String?){
+    println("\nLLAMADA ELVIS OPERATOR: "+nombre?.length)
+}
+
  // OJO ESTE OPCIONAL NO ES COMO EL DE TYPESCRIPT DELEY HAY QUE MANDAR COMO PARAMETRO PERO PUEDE SER NULL
 fun calcularSueldo(sueldo:Double,tasa:Double=12.00,opcion:Int?=null): Double? {
      print("Calculando sueldo")
@@ -86,11 +106,8 @@ fun imprimirMensaje():Unit{
     print("hola mundo"  );
 }
 
-class Suma(uno:Int,dos:Int):NumerosKotlin(uno,dos){
-    public  fun sumar():Int{
-        return this.numeroUno+this.numeroDos
-    }
-}
+
+abstract  class NumerosKotlin(var numeroUno:Int, var  numeroDos:Int){}
 abstract  class NumerosJava{
     val numeroUno:Int
     val numeroDos:Int
@@ -99,6 +116,36 @@ abstract  class NumerosJava{
         numeroDos=dos;
     }
 }
-abstract  class NumerosKotlin(val numeroUno:Int, val  numeroDos:Int){
 
+class Suma(uno:Int,dos:Int):NumerosKotlin(uno,dos){
+    public  fun sumar():Int{
+        return this.numeroUno+this.numeroDos
+    }
 }
+
+class Suma2(uno:Int,dos:Int):NumerosKotlin(uno,dos){
+    init {
+        println("Hola init")
+    }
+    constructor(uno:Int?,dos:Int):this(uno ?: 0,dos){
+         println("hola1")
+
+    }
+    constructor(uno:Int,dos:Int?):this(uno,if(dos==null) 0 else dos){
+        println("hola2")
+    }
+    constructor(uno:Int?,dos:Int?):this(if(uno==null) 0 else uno,if(dos==null) 0 else dos){
+        println("hola3")
+    }
+    companion object{
+        val arregloNumeros= arrayListOf<Int>(1,2,3,4)
+        fun agregarNumero(nuevoNumero:Int){
+            this.arregloNumeros.add(nuevoNumero)
+        }
+        fun eliminarNumero(posicion:Int){
+            this.arregloNumeros.removeAt(posicion)
+        }
+    }
+}
+
+
