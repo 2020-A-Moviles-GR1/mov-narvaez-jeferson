@@ -2,51 +2,75 @@ package com.example.a01_android_application
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.util.Log
 import kotlinx.android.synthetic.main.activity_ciclo_vida.*
 
 class CicloVida : AppCompatActivity() {
-    var numeroActual=0;
-    fun sumarUnValor(){
+    var numeroActual = 0;
+    fun sumarUnValor() {
         numeroActual++;
-        tv_numero.text=numeroActual.toString()
+        tv_numero.text = numeroActual.toString()
 
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ciclo_vida)
-        Log.i("Activity","OnCreate")
-        btn_agregar.setOnClickListener{ this.sumarUnValor() }
+        Log.i("Activity", "OnCreate")
+        btn_agregar.setOnClickListener { this.sumarUnValor() }
     }
 
-    override fun onStart(){
+    override fun onStart() {
         super.onStart()
 
-        Log.i("Activity","OnStart")
+        Log.i("Activity", "OnStart")
     }
-    override fun onResume(){
+
+    override fun onResume() {
         super.onResume()
 
-        Log.i("Activity","OnResume")
+        Log.i("Activity", "OnResume")
     }
-    override fun onPause(){
+
+    override fun onPause() {
         super.onPause()
 
-        Log.i("Activity","OnPause")
+        Log.i("Activity", "OnPause")
     }
-    override fun onStop(){
+
+    override fun onStop() {
         super.onStop()
 
-        Log.i("Activity","onStop")
+        Log.i("Activity", "onStop")
     }
-    override fun onDestroy(){
+
+    override fun onDestroy() {
         super.onDestroy()
 
-        Log.i("Activity","OnDestroy")
+        Log.i("Activity", "OnDestroy")
     }
-    override fun onRestart(){
+
+    override fun onRestart() {
         super.onRestart()
 
-        Log.i("Activity","OnRestart")
+        Log.i("Activity", "OnRestart")
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        Log.i("Activity", "OnSaveInstanceState")
+        outState.run {
+            putInt("numeroActualGuardado", numeroActual)
+        }
+        super.onSaveInstanceState(outState)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        val recuperado = savedInstanceState?.getInt("numeroActualGuardado")
+        if (recuperado != null) {
+                this.numeroActual=recuperado
+            tv_numero.text=this.numeroActual.toString()
+        }
     }
 }
