@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">01-android-application</string>
+    <string name="list_view">List View</string>
+    <string name="ciclo_de_vida">Ciclo de vida</string>
 </resources>

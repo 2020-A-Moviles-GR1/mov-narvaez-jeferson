@@ -12,11 +12,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         Log.i("Activity","OnCreate")
         btn_ciclo_vida.setOnClickListener({boton-> irCicloDeVida()})
+        btn_list_view.setOnClickListener({btn->irListView()})
     }
     fun irCicloDeVida(){
         val intentExplicito= Intent(this, CicloVida::class.java)
         this.startActivity(intentExplicito)
     }
-
+    fun irListView(){
+        val intentExplicito= Intent(this, ListViewActivity::class.java)
+        this.startActivity(intentExplicito)
+    }
     
 }

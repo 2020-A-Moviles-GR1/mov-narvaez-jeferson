@@ -9,8 +9,9 @@ import kotlinx.android.synthetic.main.activity_ciclo_vida.*
 class CicloVida : AppCompatActivity() {
     var numeroActual = 0;
     fun sumarUnValor() {
-        numeroActual++;
-        tv_numero.text = numeroActual.toString()
+       numeroActual++;
+       tv_numero.text = numeroActual.toString()
+        ServicioBDDMemoria.añadirNumero()
 
     }
 
@@ -18,6 +19,11 @@ class CicloVida : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ciclo_vida)
         Log.i("Activity", "OnCreate")
+        numeroActual=ServicioBDDMemoria.numero
+        if (numeroActual!=0){
+            tv_numero.text=numeroActual.toString()
+        }
+
         btn_agregar.setOnClickListener { this.sumarUnValor() }
     }
 
