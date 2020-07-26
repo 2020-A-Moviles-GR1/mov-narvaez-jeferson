@@ -27,5 +27,16 @@ class ListViewActivity : AppCompatActivity() {
             parent,view,position,id ->
             Log.i("list-view","Posicion $position")
         }
+        btn_agregar.setOnClickListener{
+            agregarEntrenador(adaptador,listaEntrenadores)
+        }
+
+
+    }
+    fun agregarEntrenador(adaptador:ArrayAdapter<Entrenador>,listaEntrenadores:ArrayList<Entrenador>){
+        listaEntrenadores.add(Entrenador("Jeferson","Narvaez"))
+        adaptador.notifyDataSetChanged()
+
+
     }
 }

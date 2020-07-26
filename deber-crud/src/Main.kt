@@ -8,13 +8,19 @@ fun main(args:Array<String>) {
 
 
 fun menuPrincipal(){
+
     println("Menu principal porfavor seleccione una opcion");
 
-    println("[L]istar canciones\n[A]gregar canciones\n[E]scoger cancion\n[M]Eliminar todas las canciones\n[S]alir")
+    println("[L]istar canciones\n" +
+            "[A]gregar canciones\n" +
+            "[E]scoger cancion\n" +
+            "[M]Eliminar todas las canciones\n" +
+            "[S]alir")
     println("Porfavor seleccione una opción:");
     when (readLine()!!.toLowerCase()) {
         "l" -> {
            val canciones= cargarDatos()
+
            imprimirCanciones(canciones)
             menuPrincipal()
 
@@ -22,10 +28,12 @@ fun menuPrincipal(){
         "a" -> {
            agregarCancion()
             val canciones= cargarDatos()
+
             imprimirCanciones(canciones)
             menuPrincipal()
         }
         "e" -> {
+
             println("Ingrese el numero de la canción a escoger")
             val posicion:Int= readLine()!!.toInt()
             menuCancion(posicion)
@@ -58,6 +66,7 @@ fun guardarDatos(canciones: MutableList<MutableList<String>>) {
     escribirArchivo.close()
 }
 fun imprimirCanciones(canciones:MutableList<MutableList<String>>){
+
     var index:Int=1;
     canciones.forEach(Consumer { cancion:MutableList<String> ->
         println("${index}.-Nombre canción:"+cancion[0]+" Autor/Cancion:"+cancion[1])
@@ -67,6 +76,7 @@ fun imprimirCanciones(canciones:MutableList<MutableList<String>>){
 }
 
 fun agregarCancion(){
+
     val canciones= cargarDatos()
     println("Ingrese el nombre de la canción")
     val nombre= readLine().toString()
@@ -75,6 +85,7 @@ fun agregarCancion(){
     println("Ingrese el genero de la canción")
     val genero= readLine().toString()
     println("Ingrese los acordes separados por una coma (,)")
+
     val acordes= readLine().toString()
     val cancion = mutableListOf<String>(nombre,autor,genero, acordes)
     canciones.add(cancion);
@@ -106,6 +117,7 @@ fun seleccinarCancion(index:Int):MutableList<String>{
     return cancionSeleccionada
 }
 fun imprimirCancion(cancion:MutableList<String>){
+
     println("Nombre:${cancion[0]}\n" +
             "Autor/Grupo:${cancion[1]}\n" +
             "Genero:${cancion[2]}\n" +
@@ -156,3 +168,4 @@ fun menuCancion(posicion: Int){
     }
 
 }
+
