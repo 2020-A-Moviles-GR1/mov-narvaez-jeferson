@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_agregar_cancion.*
-import kotlinx.android.synthetic.main.activity_cancion.*
 
 class AgregarCancionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,18 +17,21 @@ class AgregarCancionActivity : AppCompatActivity() {
             //Me enviaron para modificar
             tv_agregar_modificar_c.text="Modificar Cancion"
             btn_agregar_modificar.setText("MODIFICAR")
-            var cancion:Cancion= BddService.obtenerCancion(posicion)
-            et_nombre.setText(cancion.nombre)
-            et_autor_genero.setText(cancion.autor)
-            et_genero.setText(cancion.genero)
-            et_acordes.setText(cancion.acordes)
+            var cancion: Cancion? = BddService.obtenerCancion(posicion)
+            if (cancion != null) {
+                et_nombre.setText(cancion.nombre)
+                et_autor_genero.setText(cancion.autor)
+                et_genero.setText(cancion.genero)
+                et_acordes.setText(cancion.acordes)
+            }
+
             btn_agregar_modificar.setOnClickListener {
-                BddService.modificarCancion(posicion, Cancion(
+                BddService.modificarCancion(posicion,
                     et_nombre.text.toString(),
                     et_autor_genero.text.toString(),
                     et_genero.text.toString(),
                     et_acordes.text.toString()
-                ))
+                )
                 Toast.makeText(applicationContext,"Cancion Modificada con Exito",Toast.LENGTH_SHORT).show()
                 irACancion(posicion)
             }
@@ -39,12 +41,12 @@ class AgregarCancionActivity : AppCompatActivity() {
             btn_agregar_modificar.setText("AGREGAR")
             //Me enviaron para agregar
             btn_agregar_modificar.setOnClickListener {
-                BddService.agregarCancion(Cancion(
+                BddService.agregarCancion(
                     et_nombre.text.toString(),
                     et_autor_genero.text.toString(),
                     et_genero.text.toString(),
                     et_acordes.text.toString()
-                ))
+                )
                 Toast.makeText(applicationContext,"Cancion Agregada con Exito",Toast.LENGTH_SHORT).show()
                 irAListaCanciones()
             }

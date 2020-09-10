@@ -22,9 +22,9 @@ class AcordesActivity : AppCompatActivity() {
         val posicion= intent.getIntExtra("index",-1)
 
         if(posicion>-1){
-            var cancion:Cancion= BddService.obtenerCancion(posicion)
-            tv_cancion_y_autor.setText("${cancion.nombre} - ${cancion.autor}")
-            val chords=cancion.acordes.split(",").toTypedArray()
+            var cancion: Cancion? = BddService.obtenerCancion(posicion)
+            tv_cancion_y_autor.setText("${cancion?.nombre} - ${cancion?.autor}")
+            val chords=cancion!!.acordes.split(",").toTypedArray()
             val adaptador= ArrayAdapter(this,android.R.layout.simple_list_item_1,chords)
             lv_acordes.adapter=adaptador
 

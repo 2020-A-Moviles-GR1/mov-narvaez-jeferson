@@ -13,25 +13,23 @@ class ListaCancionesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lista_canciones)
+
         val listaCanciones= BddService.listaCanciones
-
-
+        Log.i("Lista-Http","${listaCanciones}")
         val adaptador=ArrayAdapter(this,android.R.layout.simple_list_item_1,listaCanciones)
         lv_canciones.adapter=adaptador
-
         lv_canciones.onItemClickListener=AdapterView.OnItemClickListener{
                 parent,view,position,id ->
            Log.i("list-view","Posicion ${listaCanciones[position]}")
-            irACancion(position);
+            irACancion(listaCanciones[position].id);
         }
         btn_lista_a_main.setOnClickListener {
             this.startActivity(Intent(this,MainActivity::class.java))
         }
 
-
-
-
-
+    }
+    init {
+        BddService.getCanciones()
     }
     fun irACancion(posicion:Int){
         val intentExplicito= Intent(this, CancionActivity::class.java)

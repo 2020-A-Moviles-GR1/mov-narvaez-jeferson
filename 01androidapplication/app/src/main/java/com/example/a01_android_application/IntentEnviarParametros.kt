@@ -20,6 +20,19 @@ class IntentEnviarParametros : AppCompatActivity() {
         if(textDeOtraApp!=null){
             Log.i("intents","Texto compartido $textDeOtraApp")
         }
+        val cachetes=intent.getParcelableExtra<Mascota>("mascota")
+        if(cachetes!=null){
+            Log.i("mascota","${cachetes.nombre}  - ${cachetes.duenio?.nombre}"  )
+        }
+        val arrMascotas=intent.getParcelableArrayListExtra<Mascota>("arreglomascotas")
+        if(arrMascotas!=null){
+            arrMascotas.forEach{
+                if(it!=null) {
+                    Log.i("arreglo mascotas", "${it.nombre} ${it.duenio?.nombre}")
+                }
+            }
+
+        }
         btn_devolver_respuesta.setOnClickListener{
             //Metodo de la clase para terminar una actividad
             finish()
