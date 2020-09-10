@@ -3,6 +3,7 @@ package com.example.examen1bimestre
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_acordes.*
 import kotlinx.android.synthetic.main.activity_agregar_cancion.*
@@ -16,22 +17,26 @@ class CancionActivity : AppCompatActivity() {
         val posicion= intent.getIntExtra("index",-1)
 
         if(posicion>-1){
-            var cancion:Cancion= BddService.obtenerCancion(posicion)
-            tv_nombre.text=cancion.nombre;
-            tv_autor.text=cancion.autor;
-            tv_genero.text=cancion.genero;
-            tv_acordes.text=cancion.acordes;
+            var cancion: Cancion? = BddService.obtenerCancion(posicion)
+            Log.i("ID-http","${posicion}")
+            if (cancion != null) {
+                tv_nombre.text=cancion.nombre
+                tv_autor.text=cancion.autor;
+                tv_genero.text=cancion.genero;
+                tv_acordes.text=cancion.acordes;
+            };
+
 
             btn_eliminar.setOnClickListener {
-                BddService.elimarCancion(cancion)
+                BddService.elimarCancion(cancion!!.id)
                 Toast.makeText(applicationContext,"Cancion Eliminada", Toast.LENGTH_SHORT).show()
                 irAListaCanciones()
             }
             btn_modificar.setOnClickListener {
-                irACancionAgregar(posicion);
+                irACancionAgregar(cancion!!.id);
             }
             btn_a_acordeslist.setOnClickListener {
-                irAAcordesCancion(posicion)
+                irAAcordesCancion(cancion!!.id)
             }
 
         }else{
