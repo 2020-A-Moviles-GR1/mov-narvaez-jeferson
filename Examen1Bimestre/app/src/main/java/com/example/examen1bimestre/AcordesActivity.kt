@@ -10,6 +10,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.Toast
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_acordes.*
 import kotlinx.android.synthetic.main.activity_cancion.*
 import kotlinx.android.synthetic.main.activity_lista_canciones.*
@@ -19,6 +20,7 @@ class AcordesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_acordes)
+        BddService.getAcordes()
         val posicion= intent.getIntExtra("index",-1)
 
         if(posicion>-1){
@@ -33,9 +35,11 @@ class AcordesActivity : AppCompatActivity() {
                 Log.i("list-view","Posicion acorde ${chords[position]}")
                 val acorde_encontrado=BddService.buscarAcorde(chords[position])
                 if(acorde_encontrado!=null){
-                    Log.i("acorde-econtrado","$acorde_encontrado")
+                    Log.i("acorde-econtrado","${acorde_encontrado.img_url}")
                     //Cambia la imagen
-                  iv_chord.setImageResource(acorde_encontrado.imagen)
+                    Picasso.get().load("https://"+acorde_encontrado.img_url).placeholder(R.drawable.guitarra2)
+                        .error(R.drawable.guitarra_3).into(iv_chord);
+                 // iv_chord.setImageResource(acorde_encontrado.imagen)
 
                 }else{
                     Toast.makeText(applicationContext,"No se encuentra ese acorde", Toast.LENGTH_SHORT).show()

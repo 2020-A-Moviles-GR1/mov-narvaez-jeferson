@@ -84,11 +84,21 @@
         android:id="@+id/iv_chord"
         android:layout_width="130dp"
         android:layout_height="121dp"
-        android:layout_marginTop="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_cancion_y_autor"
         app:srcCompat="@drawable/guitarra2" />
+
+    <Button
+        android:id="@+id/btn_maps_acordes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="Maps"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.432"
+        app:layout_constraintStart_toEndOf="@+id/iv_chord"
+        app:layout_constraintTop_toBottomOf="@+id/tv_cancion_y_autor" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
