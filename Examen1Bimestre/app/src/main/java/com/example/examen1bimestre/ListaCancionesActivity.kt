@@ -7,7 +7,6 @@ import android.util.Log
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import kotlinx.android.synthetic.main.activity_lista_canciones.*
-import kotlinx.android.synthetic.main.activity_main.*
 
 class ListaCancionesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,8 +16,8 @@ class ListaCancionesActivity : AppCompatActivity() {
         val listaCanciones= BddService.listaCanciones
         Log.i("Lista-Http","${listaCanciones}")
         val adaptador=ArrayAdapter(this,android.R.layout.simple_list_item_1,listaCanciones)
-        lv_canciones.adapter=adaptador
-        lv_canciones.onItemClickListener=AdapterView.OnItemClickListener{
+        lv_acordes_main.adapter=adaptador
+        lv_acordes_main.onItemClickListener=AdapterView.OnItemClickListener{
                 parent,view,position,id ->
            Log.i("list-view","Posicion ${listaCanciones[position]}")
             irACancion(listaCanciones[position].id);

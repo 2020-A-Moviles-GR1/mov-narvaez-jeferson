@@ -15,6 +15,9 @@ class MainActivity : AppCompatActivity() {
         btn_listar_canciones.setOnClickListener {
             this.startActivity(Intent(this,ListaCancionesActivity::class.java))
         }
+        btn_listar_acordes.setOnClickListener {
+            this.startActivity(Intent(this,ListaAcordesActivity::class.java))
+        }
 
     }
 
