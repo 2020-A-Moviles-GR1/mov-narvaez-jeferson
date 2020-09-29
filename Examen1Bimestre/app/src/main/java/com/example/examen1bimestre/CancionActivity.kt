@@ -38,6 +38,10 @@ class CancionActivity : AppCompatActivity() {
             btn_a_acordeslist.setOnClickListener {
                 irAAcordesCancion(cancion!!.id)
             }
+            btn_a_maps.setOnClickListener {
+                irMapa(cancion!!.acordes,"${cancion.nombre} ${cancion.autor}")
+            }
+
 
         }else{
            irAListaCanciones()
@@ -49,6 +53,12 @@ class CancionActivity : AppCompatActivity() {
             this.startActivity(Intent(this,MainActivity::class.java))
         }
 
+    }
+    fun irMapa(acordes:String,nombreautor:String){
+        val intent = Intent(this, MapsActivity::class.java)
+        intent.putExtra("acordes",acordes)
+        intent.putExtra("nombre-autor",nombreautor)
+        this.startActivity(intent)
     }
     fun irAListaCanciones(){
         val intentExplicito= Intent(this, ListaCancionesActivity::class.java)

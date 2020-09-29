@@ -15,9 +15,14 @@ class BddService {
         var cancion: Cancion? =null
         var listaAcordes= listOf<Acorde>()
         fun buscarAcorde(chord:String): Acorde? {
+            var ac=chord.toLowerCase()
 
-            var acordeEncontrado=listaAcordes.find{acorde -> acorde.notacion_inglesa
-                .equals(chord.toLowerCase())||acorde.notacion_latina.equals(chord.toLowerCase()) }
+            var acordeEncontrado=listaAcordes.find{
+
+                    acorde -> acorde.notacion_inglesa.equals(ac)||acorde.notacion_latina.equals(ac)
+
+            }
+
             return acordeEncontrado
         }
         fun getCanciones() {
