@@ -6,4 +6,5 @@
     <string name="genero">Genero:</string>
     <string name="autor">Autor:</string>
     <string name="acorde">Acorde</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
