@@ -64,5 +64,100 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hsv_categorias" />
+
+    <TextView
+        android:id="@+id/tv_encabezado_app"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#222428"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="TITULO"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <HorizontalScrollView
+        android:id="@+id/hsv_categorias"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_encabezado_app">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_business"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/colorDark"
+                android:text="Business"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/btn_entertainment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/colorDark"
+                android:text="Entertainment"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/btn_general"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/colorDark"
+                android:text="General"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/btn_health"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/colorDark"
+                android:text="Health"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/btn_science"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/colorDark"
+                android:text="SCIENCE"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/btn_sports"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/colorDark"
+                android:text="Sports"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/btn_technology"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/colorDark"
+                android:text="Technology"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
