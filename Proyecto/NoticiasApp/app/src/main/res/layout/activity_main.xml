@@ -70,7 +70,7 @@
         android:id="@+id/tv_encabezado_app"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="#222428"
+        android:background="@color/colorPrimary"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:text="TITULO"
